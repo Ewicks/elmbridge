@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.http import HttpResponse
 
 
 def home(request):
@@ -13,18 +14,24 @@ def home(request):
             form.save()
         return redirect('home')
 
-    context = {'jobs': jobs, 'form': form}
-    return render(request, 'crudapp/home.html', context)
+    return render(request, 'crudapp/home.html', {'jobs': jobs, 'form': form})
 
-# def index(request):
-# 	tasks = Task.objects.all()
-# 	form = TaskForm()
 
-# 	if request.method =='POST':
-# 		form = TaskForm(request.POST)
-# 		if form.is_valid():
-# 			form.save()
-# 		return redirect('list')
+def edit(request, pk):
+    job = Job.objects.get(id=pk)
+    form = JobForm(instance=job)
 
-# 	context = {'tasks':tasks, 'form':form}
-# 	return render(request, 'tasks/list.html', context)
+    if request.method == 'POST':
+        form = JobForm(request.POST, instance=job)
+        if form.is_valid():
+            form.save()
+        return redirect('home')
+    return render(request, 'crudapp/edit.html', {'form': form})
+
+
+def delete(request, pk):
+    job = Job.objects.get(id=pk)
+    if request.method == 'POST':
+        job.delete()
+        return redirect('home')
+    return render(request, 'crudapp/delete.html', {})

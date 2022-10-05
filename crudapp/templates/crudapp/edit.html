@@ -26,23 +26,16 @@ body {
 
 
 <div class="center-column">
-  <h1 class="text-center my-5">Jobs List</h1>
+  <h1 class="text-center my-5">Edit Item</h1>
 
   <div class="row d-flex justify-content-center lightblue-bg">
     <div class="col-12 col-lg-10 mx-auto" style="width: 800px; background-color: white">
       <div class="input-group input-group-sm mb-3">
-        <form method="POST" action="{% url 'home' %}">
+        <form method="POST" action="">
           {% csrf_token %}
           {{form.title}}
-          <input type="submit" name="create job" class="btn btn-info">
+          <input type="submit" name="edit post" class="btn btn-info">
         </form>
-      </div>
-      <div class="d-flex">
-        <ul>
-          {% for job in jobs %}
-          <li>{{ job }}</li> <a href="{% url 'edit' job.id %}">Edit</a> <a href="{% url 'delete' job.id %}">delete</a>
-          {% endfor %}
-        </ul>
       </div>
     </div>
   </div>
