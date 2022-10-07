@@ -213,7 +213,9 @@ def my_function1():
 		contactnameslist.append(atags.get_text())
 
 	time.sleep(15)
-	print(contactnameslist)
-	return contactnameslist
+	for i, t in enumerate(zip(addresslist, contactnameslist)):
+		it = (i, t)
+		data.append(it)
+	return data
 
 
