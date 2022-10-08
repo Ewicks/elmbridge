@@ -8,3 +8,10 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = '__all__'
+
+
+class WordForm(forms.ModelForm):
+    class Meta:
+        model = Word
+        fields = '__all__'
+        # fields = ['name']

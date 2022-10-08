@@ -1,5 +1,4 @@
 from django.db import models
-from web import *
 
 
 class Task(models.Model):
@@ -9,6 +8,13 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Word(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
 
 class Category(models.Model):

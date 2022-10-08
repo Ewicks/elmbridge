@@ -21,16 +21,15 @@
 <table class="table" style="width:100%">
   <thead>
     <tr>
-      <th scope="col">sdfsdf</th>
-      <th scope="col">sdfsdf</th>
-      <th scope="col">sdfsdf</th>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">address</th>
     </tr>
     {% for test in tester %}
     <tr>
       <th scope="col">#</th>
-      <th scope="col">{{test[0]}}</th>
-      <th scope="col">{{test[1]}}</th>
-      <th scope="col">{{test{2}}}</th>
+      <th scope="col">{{test.1}}</th>
+      <th scope="col">{{test.0}}</th>
     </tr>
     {% endfor %}
   </thead>
