@@ -24,8 +24,8 @@ def interface(request):
 	if request.method == 'POST':
 		form = WordForm(request.POST)
 		name = request.POST.get('name')
-		wordslist.append(name)
-		print(wordslist)	
+		# wordslist.append(name)
+		# print(wordslist)	
 
 		if form.is_valid():
 			form.save()
@@ -42,8 +42,8 @@ def deleteword(request, pk):
 	word = Word.objects.get(id=pk)
 
 	if request.method == 'POST':
-		wordslist.remove(f'{word}')
-		print(wordslist)
+		# wordslist.remove(f'{word}')
+		# print(wordslist)
 		word.delete()
 		return redirect('interface')
 

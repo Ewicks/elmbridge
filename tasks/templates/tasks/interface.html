@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<script src="https://kit.fontawesome.com/b2fe83387a.js" crossorigin="anonymous"></script>
 <style>
     @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css');
     html,
@@ -9,14 +9,24 @@
     }
 
     .item-row{
-		background-color: #906abd;
+		background-color: #272b2b;
 		margin: 10px;
-		padding: 20px;
-		border-radius: 3px;
+        width: 50%;
+		padding: 10px;
+		border-radius: 30px;
 		color: #fff;
 		font-size: 16px;
 		box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
 	}
+
+
+    i {
+        color: #fff !important;
+    }
+
+    a {
+        text-decoration: none;
+    }
 
     /* .boxsize {
         height: 500px;
@@ -33,10 +43,12 @@
                 <input class="btn btn-info" type="submit" name="word">
             </form>
             <div class="todo-list">
-            {% for word in words  %}
+            {% for word in words %}
                 <div class="item-row">
-                    <a class="btn btn-sm btn-info" href="">Update</a>
-                    <a class="btn btn-sm btn-danger" href="{% url 'deleteword' word.id %}">Delete</a>
+                    <!-- <a class="btn btn-sm btn-info" href="">Update</a> -->
+                        <a class="mx-1 text-decoration" href="{% url 'deleteword' word.id %}">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
                     <span>{{word}}</span>
                 </div>
             {% endfor %}
