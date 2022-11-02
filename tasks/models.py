@@ -1,5 +1,5 @@
 from django.db import models
-
+from .list import get_list
 
 class Task(models.Model):
     title = models.CharField(max_length=200)
@@ -23,8 +23,8 @@ class Category(models.Model):
     def __unicode__(self):
         return self.cat_name
 
-    # @classmethod
-    # def create_from_list(cls):
-    #     values_list = my_function()
-    #     for value in values_list:
-    #         cls.objects.create(cat_name=value)
+    @classmethod
+    def create_from_list(cls):
+        values_list = get_list()
+        for value in values_list:
+            cls.objects.create(cat_name=value)

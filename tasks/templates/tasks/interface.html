@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <style>
-
     @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css');
     html,
     body {
@@ -19,28 +18,13 @@
 		box-shadow: 0px -1px 10px -4px rgba(0,0,0,0.75);
 	}
 
-	
-
-	/* /* .center-column{
-        width: sssssss;
-		margin: 20px auto;
-		padding:20px;
-		background-color: #fff;
-		border-radius: 3px;
-		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
-	} */
- 
-
-	
-
+    /* .boxsize {
+        height: 500px;
+        width: 500px;
+    } */
 </style>
 
-<div class="container">
-    
-</div>
-
-
-<div class="h-100 d-flex align-items-center justify-content-center">
+<div class="h-100 d-flex align-items-center boxsize justify-content-center">
     <div style="background:white">
         <div class="center-column">
             <form method="POST" action="">
@@ -52,7 +36,7 @@
             {% for word in words  %}
                 <div class="item-row">
                     <a class="btn btn-sm btn-info" href="">Update</a>
-                    <a class="btn btn-sm btn-danger" href="">Delete</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'deleteword' word.id %}">Delete</a>
                     <span>{{word}}</span>
                 </div>
             {% endfor %}

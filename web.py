@@ -8,17 +8,6 @@ import random
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-
-
-
-
-# HTTPConnection.default_socket_options = ( 
-#     HTTPConnection.default_socket_options + [
-#     (socket.SOL_SOCKET, socket.SO_SNDBUF, 1000000), #1MB in byte
-#     (socket.SOL_SOCKET, socket.SO_RCVBUF, 1000000)
-# ])
-
-
 def my_function():
 
     USER_AGENTS = [

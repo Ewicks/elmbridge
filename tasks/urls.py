@@ -7,4 +7,5 @@ urlpatterns = [
     path('delete_task/<str:pk>/', views.deleteTask, name='delete_task'),
     path('test/', views.my_view, name='tests'),
     path('interface/', views.interface, name='interface'),
+    path('delete<str:pk>/', views.deleteword, name='deleteword'),
 ]
