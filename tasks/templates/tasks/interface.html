@@ -27,20 +27,24 @@
     a {
         text-decoration: none;
     }
-
-    /* .boxsize {
-        height: 500px;
-        width: 500px;
-    } */
 </style>
 
 <div class="h-100 d-flex align-items-center boxsize justify-content-center">
     <div style="background:white">
         <div class="center-column">
+            <form method="POST" action="{% url 'tests' %}">
+                {% csrf_token %}
+                {{ dateform.as_p }}
+                <input type="submit" name="date" required>
+
+            </form>
             <form method="POST" action="">
                 {% csrf_token %}
-                {{ form.name }}
-                <input class="btn btn-info" type="submit" name="word">
+
+                {{ form }}
+
+                <input class="btn btn-info" type="submit" name="word" required>
+
             </form>
             <div class="todo-list">
             {% for word in words %}

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tasks',
     'newapp',
     'crudapp',
+    'bootstrap_datepicker_plus'
 ]
 
 MIDDLEWARE = [

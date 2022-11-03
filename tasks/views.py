@@ -13,8 +13,11 @@ import requests
 import random
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
-
+# def hold(request):
+# 	dateform = DateForm()
+# 	'dateform': dateform,
 
 
 def interface(request):
@@ -23,10 +26,6 @@ def interface(request):
 
 	if request.method == 'POST':
 		form = WordForm(request.POST)
-		name = request.POST.get('name')
-		# wordslist.append(name)
-		# print(wordslist)	
-
 		if form.is_valid():
 			form.save()
 		return redirect('interface')
@@ -42,12 +41,9 @@ def deleteword(request, pk):
 	word = Word.objects.get(id=pk)
 
 	if request.method == 'POST':
-		# wordslist.remove(f'{word}')
-		# print(wordslist)
 		word.delete()
 		return redirect('interface')
 
-	# wordslist.remove(f'{word}')
 	return render(request, 'tasks/delete.html', {})
 
 
@@ -82,15 +78,15 @@ def updateTask(request, pk):
 
 	return render(request, 'tasks/update_task.html', context)
 
-def deleteTask(request, pk):
-	item = Task.objects.get(id=pk)
+# def deleteTask(request, pk):
+# 	item = Task.objects.get(id=pk)
 
-	if request.method == 'POST':
-		item.delete()
-		return redirect('/')
+# 	if request.method == 'POST':
+# 		item.delete()
+# 		return redirect('/')
 
-	context = {'item': item}
-	return render(request, 'tasks/delete.html', context)
+# 	context = {'item': item}
+# 	return render(request, 'tasks/delete.html', context)
 
 
 def test(request):
@@ -98,8 +94,17 @@ def test(request):
 
 
 def my_view(request):
-	tester = my_function1()
-	return render(request, 'tasks/test.html', {'tester': tester})
+	
+	if request.method == 'POST':
+		datesdict = {}
+		datesdict = request.POST.dict()
+		print(datesdict)
+		startdate = datesdict['startdate']
+		enddate = datesdict['enddate']
+		list = my_function1(startdate, enddate)
+		
+
+	return render(request, 'tasks/test.html', {'list': list})
 
 # def my_view(request):
 # 	Category.create_from_list()
@@ -113,10 +118,13 @@ def get_word_objects():
 	return objectlist
 
 
-def my_function1():
+def my_function1(startdate, enddate):
+	
 	wordlist = get_word_objects()
-	alldates = pd.date_range(start="2020-03-04", end="2020-03-05").strftime("%Y-%m-%d")
+	alldates = pd.date_range(start=f"{startdate}", end=f"{enddate}").strftime("%Y-%m-%d")
 	alldateslist = list(alldates)
+	print(startdate)
+	print(enddate)
 
 	listofdata = []
 

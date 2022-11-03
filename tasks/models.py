@@ -12,9 +12,17 @@ class Task(models.Model):
 
 class Word(models.Model):
     name = models.CharField(max_length=200)
-
+   
     def __str__(self):
         return self.name
+
+
+class Date(models.Model):
+    startdate = models.DateField(blank=True, null=True)
+    enddate = models.DateField(blank=True, null=True)
+    
+    # def __str__(self):
+    #     return self.name
 
 
 class Category(models.Model):
