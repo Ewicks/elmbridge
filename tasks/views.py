@@ -16,9 +16,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 
-# def hold(request):
-
-
 def interface(request):
 	words = Word.objects.all()
 	form = WordForm()
@@ -26,8 +23,9 @@ def interface(request):
 
 	if request.method == 'POST':
 		print(request.POST)
-		form = WordForm(request.POST)
+		form = WordForm(request.POST or None)
 		if form.is_valid():
+			print(form)
 			form.save()
 		return redirect('interface')
 
