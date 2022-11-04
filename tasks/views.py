@@ -15,16 +15,17 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
+
 # def hold(request):
-# 	dateform = DateForm()
-# 	'dateform': dateform,
 
 
 def interface(request):
 	words = Word.objects.all()
 	form = WordForm()
+	dateform = DateForm()
 
 	if request.method == 'POST':
+		print(request.POST)
 		form = WordForm(request.POST)
 		if form.is_valid():
 			form.save()
@@ -33,6 +34,8 @@ def interface(request):
 	context = {
 		'form': form,
 		'words': words,
+		'dateform': dateform,
+
 	}
 	return render(request, 'tasks/interface.html', context)
 
@@ -51,16 +54,8 @@ wordslist = []
 
 
 def index(request):
-	tasks = Task.objects.all()
-	form = TaskForm()
 
-	if request.method == 'POST':
-		form = TaskForm(request.POST)
-		if form.is_valid():
-			form.save()
-		return redirect('list')
-
-	context = {'tasks': tasks, 'form': form}
+	context = {}
 	return render(request, 'tasks/list.html', context)
 
 
@@ -111,7 +106,7 @@ def my_view(request):
 # 	return render(request, 'tasks/test.html', {})
 
 def get_word_objects():
-	words = Word.objects.values_list('name', flat=True)
+	words = Word.objects.values_list('word', flat=True)
 	objectlist = list(words)
 	# for x in words:
 	# 	wordslist.append(x)

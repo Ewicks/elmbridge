@@ -1,21 +1,16 @@
 from django import forms
 from django.forms import ModelForm
 from .models import *
-from bootstrap_datepicker_plus.widgets import DatePickerInput
 
 
-class TaskForm(forms.ModelForm):
 
-    class Meta:
-        model = Task
-        fields = '__all__'
 
 
 class WordForm(forms.ModelForm):
     class Meta:
         model = Word
         fields = '__all__'
-        # fields = ['name']
+
         
 class DateInput(forms.DateInput):
     input_type = 'date'
