@@ -33,7 +33,6 @@ def interface(request):
 		'form': form,
 		'words': words,
 		'dateform': dateform,
-
 	}
 	return render(request, 'tasks/interface.html', context)
 
@@ -83,21 +82,23 @@ def updateTask(request, pk):
 
 
 def test(request):
-	return render(request, 'tasks/test.html', {})
+	return render(request, 'tasks/test.html')
 
 
 def my_view(request):
-	
 	if request.method == 'POST':
-		datesdict = {}
 		datesdict = request.POST.dict()
 		print(datesdict)
 		startdate = datesdict['startdate']
 		enddate = datesdict['enddate']
 		list = my_function1(startdate, enddate)
+
+	context = {
+		'list': list,
+	}
 		
 
-	return render(request, 'tasks/test.html', {'list': list})
+	return render(request, 'tasks/test.html', context)
 
 # def my_view(request):
 # 	Category.create_from_list()
@@ -112,7 +113,7 @@ def get_word_objects():
 
 
 def my_function1(startdate, enddate):
-	
+	data.clear()
 	wordlist = get_word_objects()
 	alldates = pd.date_range(start=f"{startdate}", end=f"{enddate}").strftime("%Y-%m-%d")
 	alldateslist = list(alldates)
@@ -171,7 +172,6 @@ def code(x, wordlist):
 			updatehouselist = []
 
 			addresslist = []
-			print(wordlist)
 			# Get all house sections that contain keyword in a list
 			# modifiedlist = wordlist.replace(",", "|")
 			# print(modifiedlist)
@@ -179,7 +179,7 @@ def code(x, wordlist):
 			convertedlist = convert(wordlist)
 			# print(convertedlist)
 			words_search_for = convertedlist.rstrip(convertedlist[-1])
-			# print(words_search_for)
+			print(words_search_for)
 
 
 			# words_search_for = 'extension|loft|rear|side|double'
