@@ -36,7 +36,7 @@
                 {% csrf_token %}
                 {{ dateform.as_p }}
     
-                <input type="submit" name="date" required>
+                <input class="btn btn-info" type="submit" name="date" required>
 
             </form>
             <form method="POST" action="">
@@ -44,7 +44,7 @@
 
                 {{ form }}
 
-                <button class="btn btn-lg btn-info">Submit</button> 
+                <button class="btn btn-info">Submit</button> 
 
             </form>
             <div class="todo-list">
