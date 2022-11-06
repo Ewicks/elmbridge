@@ -2,7 +2,6 @@ from random_user_agent.user_agent import UserAgent
 import pandas as pd
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-import requests
 from bs4 import BeautifulSoup
 import re
 import time
