@@ -230,7 +230,7 @@ def code(x, wordlist):
 			zippeddata = zip(addresslist, contactnameslist)
 			for zipp in zippeddata:
 				data.append(zipp)
-			# print(data)
+			print(data)
 			b = False
 
 			
