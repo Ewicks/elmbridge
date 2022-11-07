@@ -13,3 +13,4 @@ sqlparse==0.4.3
 torpy==1.1.6
 useragent==0.1.1
 whitenoise==6.2.0
+requests==2.9.1
