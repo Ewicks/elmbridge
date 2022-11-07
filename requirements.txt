@@ -12,4 +12,4 @@ random-user-agent==1.0.1
 sqlparse==0.4.3
 torpy==1.1.6
 useragent==0.1.1
-requests==2.21.0
+whitenoise==6.2.0
