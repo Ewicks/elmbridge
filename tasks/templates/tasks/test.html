@@ -27,7 +27,7 @@
     </tr>
     {% for item in list %}
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">{{ forloop.counter }}</th>
       <th scope="col">{{item.1}}</th>
       <th scope="col">{{item.0}}</th>
     </tr>
