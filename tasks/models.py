@@ -1,5 +1,4 @@
 from django.db import models
-from .list import get_list
 from datetime import date
 
 class Word(models.Model):

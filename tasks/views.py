@@ -12,7 +12,6 @@ import requests
 import random
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 
 def interface(request):
@@ -49,10 +48,10 @@ def deleteword(request, pk):
 wordslist = []
 
 
-def index(request):
+# def index(request):
 
-	context = {}
-	return render(request, 'tasks/list.html', context)
+# 	context = {}
+# 	return render(request, 'tasks/list.html', context)
 
 
 def updateTask(request, pk):
@@ -69,15 +68,6 @@ def updateTask(request, pk):
 
 	return render(request, 'tasks/update_task.html', context)
 
-# def deleteTask(request, pk):
-# 	item = Task.objects.get(id=pk)
-
-# 	if request.method == 'POST':
-# 		item.delete()
-# 		return redirect('/')
-
-# 	context = {'item': item}
-# 	return render(request, 'tasks/delete.html', context)
 
 
 def test(request):
@@ -99,15 +89,12 @@ def my_view(request):
 
 	return render(request, 'tasks/test.html', context)
 
-# def my_view(request):
-# 	Category.create_from_list()
-# 	return render(request, 'tasks/test.html', {})
+
 
 def get_word_objects():
 	words = Word.objects.values_list('word', flat=True)
 	objectlist = list(words)
-	# for x in words:
-	# 	wordslist.append(x)
+
 	return objectlist
 
 
@@ -171,12 +158,8 @@ def code(x, wordlist):
 			updatehouselist = []
 
 			addresslist = []
-			# Get all house sections that contain keyword in a list
-			# modifiedlist = wordlist.replace(",", "|")
-			# print(modifiedlist)
-			# s = wordslist
+	
 			convertedlist = convert(wordlist)
-			# print(convertedlist)
 			words_search_for = convertedlist.rstrip(convertedlist[-1])
 			print(words_search_for)
 
@@ -218,13 +201,7 @@ def code(x, wordlist):
 
 
 
-			# for i, t in enumerate(zip(addresslist, contactnameslist)):
-			#     it = (i, t)
-			#     data.append(it)
-
-
-
-			# testdata = zip(addresslist, contactnameslist)
+			
 
 
 			zippeddata = zip(addresslist, contactnameslist)
@@ -234,24 +211,9 @@ def code(x, wordlist):
 			b = False
 
 			
-			# if close == False:
-			# 	return data
-			# 	variablee = False
-			# 	break
-			# else:
-			# 	continue
-			# for x in testdata:
-			#     data.append(x)
-
-			# newdata = tuple(data)
-			# for data in newdata:
-			#     print(data[0])
-			#     print(data[1])
-
 			
 		except:
 			print('try again')
-			# time.sleep(random.randint(1, 10))
 			time.sleep(2)
 			b = True
 
