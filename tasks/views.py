@@ -48,10 +48,6 @@ def deleteword(request, pk):
 wordslist = []
 
 
-# def index(request):
-
-# 	context = {}
-# 	return render(request, 'tasks/list.html', context)
 
 
 def updateTask(request, pk):
