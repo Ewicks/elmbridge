@@ -139,15 +139,13 @@ def code(x, wordlist):
 
 	baseurl = 'https://emaps.elmbridge.gov.uk/ebc_planning.aspx'
 
-	
-
 	header = {'User-Agent': user_agent}
 
 	b = True
 
 	while b is True:
 		try:
-			r = requests.get(f'https://emaps.elmbridge.gov.uk/ebc_planning.aspx?pageno=1&template=AdvancedSearchResultsTab.tmplt&requestType=parseTemplate&USRN%3APARAM=&apptype%3APARAM=&status%3APARAM=&decision%3APARAM=&ward%3APARAM=&txt_search%3APARAM=&daterec_from%3APARAM={x}&daterec_to%3APARAM={x}&datedec_from%3APARAM=&datedec_to%3APARAM=&pagerecs=50&orderxyz%3APARAM=REG_DATE_DT%3ADESCENDING&SearchType%3APARAM=Advanced', headers=header, timeout=9999)
+			r = requests.get(f'https://emaps.elmbridge.gov.uk/ebc_planning.aspx?pageno=1&template=AdvancedSearchResultsTab.tmplt&requestType=parseTemplate&USRN%3APARAM=&apptype%3APARAM=&status%3APARAM=&decision%3APARAM=&ward%3APARAM=&txt_search%3APARAM=&daterec_from%3APARAM={x}&daterec_to%3APARAM={x}&datedec_from%3APARAM=&datedec_to%3APARAM=&pagerecs=50&orderxyz%3APARAM=REG_DATE_DT%3ADESCENDING&SearchType%3APARAM=Advanced', timeout=9999)
 			soup = BeautifulSoup(r.content, 'lxml')
 			houselist = soup.find_all('tr')
 			linkslist = []
@@ -178,7 +176,7 @@ def code(x, wordlist):
 			contactlinkslist = []
 
 			for linkkk in linkslist:
-				r = requests.get(linkkk, headers=header, timeout=19999)
+				r = requests.get(linkkk, timeout=19999)
 				soup = BeautifulSoup(r.content, 'lxml')
 				atags = soup.find('div', id='atPubMenu').find('a')
 				parturl = atags['href']
@@ -191,15 +189,10 @@ def code(x, wordlist):
 
 
 			for linkk in contactlinkslist:
-				r = requests.get(linkk, headers=header, timeout=99999)
+				r = requests.get(linkk, timeout=99999)
 				soup = BeautifulSoup(r.content, 'lxml')
 				atags = soup.find('div', class_='atPanelContainer').find('dd').find_next('dd').contents[0]
 				contactnameslist.append(atags.get_text())
-
-
-
-
-			
 
 
 			zippeddata = zip(addresslist, contactnameslist)
