@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html id="html" lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,7 +11,7 @@
 
     <title>My First Webscraper</title>
   </head>
-  <body>
+  <body id="body">
     <h1>data is below:</h1>
     <p>This is scraped displaying live data from website</p>
     <br>
@@ -37,13 +37,37 @@
 </body>
 
 <a class="btn btn-info" href="{% url 'interface' %}">back</a>
+<h1>Download File</h1>
+
+
+<div data-html2canvas-ignore="true">
+  <button id="pdf-new"><a href="javascript:demoFromHTML()" class="button" style="color: black;">Generate PDF</a></button>
+</div>
+
+
 
 </center>
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
+
+    <script>
+        function demoFromHTML() {
+            var pdf = new jsPDF('p', 'pt', 'letter');
+            var options = {
+                background: '#fff' //background is transparent if you don't set it, which turns it black for some reason.
+            };
+            pdf.addHTML($('#body')[0], options, function () {
+                    pdf.save('Test.pdf');
+            });
+        }
+    </script>
   </body>
 </html>
+

@@ -38,7 +38,7 @@ def interface(request):
 def deleteword(request, pk):
 	word = Word.objects.get(id=pk)
 
-	if request.method == 'POST':
+	if request.method == 'GET':
 		word.delete()
 		return redirect('interface')
 

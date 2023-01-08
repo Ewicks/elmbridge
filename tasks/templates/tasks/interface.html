@@ -50,7 +50,6 @@
             <div class="todo-list">
             {% for word in words %}
                 <div class="item-row">
-                    <!-- <a class="btn btn-sm btn-info" href="">Update</a> -->
                         <a class="mx-1 text-decoration" href="{% url 'deleteword' word.id %}">
                             <i class="fa-solid fa-xmark"></i>
                         </a>
